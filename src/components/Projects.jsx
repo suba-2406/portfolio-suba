@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
-import { GithubIcon } from './Icons';
 import SectionHeading from './SectionHeading';
 import { portfolioData } from '../data/portfolioData';
 
@@ -43,24 +41,6 @@ const Projects = () => {
                 ))}
               </div>
               
-              <div className="flex items-center space-x-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-                <a 
-                  href={project.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-500 transition-colors"
-                >
-                  <GithubIcon size={18} className="mr-2" /> Code
-                </a>
-                <a 
-                  href={project.demo} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-500 transition-colors"
-                >
-                  <ExternalLink size={18} className="mr-2" /> Live Demo
-                </a>
-              </div>
             </div>
           </motion.div>
         ))}

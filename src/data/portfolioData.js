@@ -12,7 +12,7 @@ export const portfolioData = {
     photo: "/profile.jpg", // PLACEHOLDER: Put your actual profile photo in the "public" folder and name it profile.jpg
   },
   about: {
-    summary: "A dedicated Computer Science Engineering student specializing in Big Data Analytics. I have a strong foundation in both frontend and backend development, and a keen interest in Artificial Intelligence and Machine Learning. I thrive in hackathons, love building impactful projects, and am constantly learning new technologies.",
+    summary: "Tech enthusiast and Final Year CSE–Big Data Analytics student focused on Data Analytics, Web Development, and AI-driven solutions. Experienced in building projects, collaborating in hackathons, and adapting quickly to new technologies and industry trends.",
     education: "B.Tech in Computer Science and Engineering",
     specialization: "Big Data Analytics",
     interests: ["Artificial Intelligence", "Web Development", "Data Engineering", "Machine Learning"],
@@ -80,28 +80,49 @@ export const portfolioData = {
       name: "Smart India Hackathon (SIH)",
       role: "Full Stack Developer",
       description: "Collaborated with a team to solve complex problems. Gained experience in problem-solving and rapid project building.",
-      year: "2023"
+      year: "2024"
     },
     {
       name: "VIT Hackathon / Buildverse",
       role: "Frontend Developer",
       description: "Built scalable web applications under pressure. Focused on teamwork and delivery.",
-      year: "2023"
+      year: "2024"
     },
     {
-      name: "Hackathon 3 (Placeholder)", // PLACEHOLDER: Update name
-      role: "Developer", // PLACEHOLDER: Update role
-      description: "Participated in an intense coding competition, building innovative solutions.", // PLACEHOLDER: Update description
-      year: "2024" // PLACEHOLDER: Update year
+      name: "SCALER NEW TECHNOLOGY [BANGLORE]",
+      role: "Backend Developer",
+      description: "Participated in an intense coding competition, building innovative solutions.",
+      year: "2024"
     },
     {
-      name: "Hackathon 4 (Placeholder)", // PLACEHOLDER: Update name
-      role: "Developer", // PLACEHOLDER: Update role
-      description: "Worked on an AI-powered project to solve real-world problems.", // PLACEHOLDER: Update description
-      year: "2024" // PLACEHOLDER: Update year
+      name: "SIMATS [CHENNAI]",
+      role: "AI Developer",
+      description: "Worked on an AI-powered project to solve real-world problems.",
+      year: "2025"
     }
   ],
   internships: [
+    {
+      role: "MERN Stack Developer Intern",
+      company: "Alfido Tech",
+      duration: "May 2026 - Present",
+      description: "Building modern full-stack web applications using MongoDB, Express.js, React, and Node.js. Designing clean user interfaces and integrating efficient APIs.",
+      skills: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"]
+    },
+    {
+      role: "Data Analytics Intern",
+      company: "ApexPlanet Software Pvt Ltd",
+      duration: "June 2026 - July 2026",
+      description: "Analyzing business datasets, discovering trends, and creating comprehensive dashboards. Developing analytical solutions to optimize operations.",
+      skills: ["Data Analytics", "Python", "SQL", "Data Visualization"]
+    },
+    {
+      role: "Data Science Intern",
+      company: "Thiranex",
+      duration: "May 2026 - June 2026",
+      description: "Building and testing predictive models using statistical tools and machine learning libraries. Preprocessing dataset features for training.",
+      skills: ["Data Science", "Machine Learning", "Python", "Pandas", "Scikit-Learn"]
+    },
     {
       role: "AI Engineer Intern",
       company: "Upstride",
@@ -129,22 +150,22 @@ export const portfolioData = {
   volunteering: [
     {
       role: "Student Coordinator",
-      event: "DashCraft, TEXUS 2026",
+      event: "DASHCRAFT, TEXUS 2026",
       impact: "Organized and managed events, ensuring smooth execution and maximum participation."
     },
     {
-      role: "Digital Marketing Head / Event Role",
-      event: "College Fest",
+      role: "Digital Marketing Head",
+      event: "DATATRIX",
       impact: "Led the digital marketing campaign, increasing event outreach and engagement significantly."
     },
     {
       role: "Volunteer",
-      event: "Texus",
+      event: "TEXUS",
       impact: "Assisted in various operational tasks, contributing to the overall success of the event."
     },
     {
-      role: "Organizer",
-      event: "Datatrix",
+      role: "Volunteer",
+      event: "DATATRIX",
       impact: "Planned and coordinated data-centric hackathons and workshops."
     }
   ],

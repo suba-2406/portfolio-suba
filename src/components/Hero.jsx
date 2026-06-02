@@ -12,13 +12,14 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 relative"
+          className="mb-8 relative group"
         >
-          <div className="absolute inset-0 bg-primary-500 rounded-full blur-xl opacity-50"></div>
+          {/* Subtle glowing ambient background */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary-500 to-blue-500 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
           <img 
             src={portfolioData.hero.photo} 
             alt={portfolioData.hero.name} 
-            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/20 shadow-2xl"
+            className="relative w-36 h-48 md:w-44 md:h-56 rounded-3xl object-cover object-[center_20%] border-4 border-white/10 dark:border-white/20 shadow-2xl hover:scale-[1.02] transition-transform duration-300"
           />
         </motion.div>
 
