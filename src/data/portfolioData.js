@@ -126,7 +126,7 @@ export const portfolioData = {
     {
       role: "AI Engineer Intern",
       company: "Upstride",
-      duration: "Jan - Mar 2024",
+      duration: "Jan 2026 - March 2026",
       description: "Worked closely with the founder/team to develop AI models. Gained immense learning experience in production-level AI development.",
       skills: ["Machine Learning", "Python", "Data Processing", "Team Collaboration"]
     }
