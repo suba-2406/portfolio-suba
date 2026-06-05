@@ -8,8 +8,8 @@ export const portfolioData = {
     intro: "I build modern web applications and AI-driven solutions. Passionate about problem-solving and exploring the depths of Big Data and intelligent systems.",
     linkedin: "https://www.linkedin.com/in/subasree-m-a445942a2",
     github: "https://github.com/suba-2406",
-    resume: "/Subasree_Resume.pdf", // PLACEHOLDER: Put your actual resume PDF in the "public" folder and name it resume.pdf
-    photo: "/profile.jpg", // PLACEHOLDER: Put your actual profile photo in the "public" folder and name it profile.jpg
+    resume: "Subasree_Resume.pdf", // Actual resume PDF in the public folder
+    photo: "profile.jpg", // Actual profile photo in the public folder
   },
   about: {
     summary: "Tech enthusiast and Final Year CSE–Big Data Analytics student focused on Data Analytics, Web Development, and AI-driven solutions. Experienced in building projects, collaborating in hackathons, and adapting quickly to new technologies and industry trends.",
@@ -170,6 +170,7 @@ export const portfolioData = {
     }
   ],
   achievements: [
+    "Shortlisted for Centre of Excellence (CoE) under Computer Science department in my college.",
     "Shortlisted for SARAM ’26 Project Expo (Project: ELARA).",
     "Ranked Top 137 out of 630 teams in National Level Hackathon.",
     "Multiple Hackathon participations with strong project deliveries.",

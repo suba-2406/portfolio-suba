@@ -35,9 +35,10 @@ const About = () => {
 
   // Stats for the stats dashboard
   const stats = [
+    { label: 'CGPA', value: '8.99', icon: <BookOpen size={16} className="text-emerald-400" /> },
     { label: 'Internships', value: '4', icon: <Zap size={16} className="text-teal-400" /> },
     { label: 'Hackathons', value: '4', icon: <Award size={16} className="text-purple-400" /> },
-    { label: 'Projects Built', value: '6', icon: <Code size={16} className="text-blue-400" /> },
+    { label: 'Projects Built', value: '21', icon: <Code size={16} className="text-blue-400" /> },
   ];
 
   return (
@@ -69,7 +70,7 @@ const About = () => {
           </motion.div>
 
           {/* Stats Dashboard */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {stats.map((stat, i) => (
               <motion.div
                 key={i}
@@ -150,30 +151,30 @@ const About = () => {
               <div className="space-y-1">
                 <div className="flex justify-between font-mono text-[10px]">
                   <span>AI & MACHINE LEARNING</span>
-                  <span className="text-primary-400">45%</span>
+                  <span className="text-primary-400">55%</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: '45%' }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full bg-primary-500" />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: '55%' }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full bg-primary-500" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex justify-between font-mono text-[10px]">
-                  <span>BIG DATA & ANALYTICS</span>
-                  <span className="text-blue-400">35%</span>
+                  <span>DATA ANALYTICS</span>
+                  <span className="text-blue-400">65%</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: '35%' }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.1 }} className="h-full bg-blue-500" />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: '65%' }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.1 }} className="h-full bg-blue-500" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex justify-between font-mono text-[10px]">
                   <span>FULL STACK DEV</span>
-                  <span className="text-purple-400">20%</span>
+                  <span className="text-purple-400">75%</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} whileInView={{ width: '20%' }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-purple-500" />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: '75%' }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-purple-500" />
                 </div>
               </div>
             </div>
