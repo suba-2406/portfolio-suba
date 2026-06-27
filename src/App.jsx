@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,9 +13,11 @@ import GithubShowcase from './components/GithubShowcase';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThreeDBackground from './components/ThreeDBackground';
+import ThreeDIntro from './components/ThreeDIntro';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     if (darkMode) {
@@ -28,35 +31,51 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 overflow-x-hidden selection:bg-primary-500/30">
-      {/* 3D Dynamic Particle Background */}
-      <ThreeDBackground />
+      <AnimatePresence mode="wait">
+        {showIntro && (
+          <ThreeDIntro key="intro" onComplete={() => setShowIntro(false)} />
+        )}
+      </AnimatePresence>
 
-      {/* Animated Background Blobs for ambient glow */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div className="absolute top-[20%] right-[-10%] w-96 h-96 bg-blue-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-[-10%] left-[20%] w-96 h-96 bg-purple-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-      </div>
+      {!showIntro && (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0, scale: 0.9, rotateX: 8, y: 30 }}
+          animate={{ opacity: 1, scale: 1, rotateX: 0, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
+          className="w-full min-h-screen relative"
+        >
+          {/* 3D Dynamic Particle Background */}
+          <ThreeDBackground />
 
-      <div className="relative z-10 flex flex-col items-center">
-        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
+          {/* Animated Background Blobs for ambient glow */}
+          <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60">
+            <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+            <div className="absolute top-[20%] right-[-10%] w-96 h-96 bg-blue-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div className="absolute bottom-[-10%] left-[20%] w-96 h-96 bg-purple-500/15 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+          </div>
 
-        
-        <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex flex-col gap-24">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Internships />
-          <Hackathons />
-          <Volunteering />
-          <Achievements />
-          <GithubShowcase />
-          <Contact />
-        </main>
+          <div className="relative z-10 flex flex-col items-center">
+            <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
 
-        <Footer />
-      </div>
+            <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex flex-col gap-24">
+              <Hero />
+              <About />
+              <Skills />
+              <Projects />
+              <Internships />
+              <Hackathons />
+              <Volunteering />
+              <Achievements />
+              <GithubShowcase />
+              <Contact />
+            </main>
+
+            <Footer />
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

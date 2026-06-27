@@ -8,7 +8,7 @@ export const portfolioData = {
     intro: "I build modern web applications and AI-driven solutions. Passionate about problem-solving and exploring the depths of Big Data and intelligent systems.",
     linkedin: "https://www.linkedin.com/in/subasree-m-a445942a2",
     github: "https://github.com/suba-2406",
-    resume: "Subasree_Resume.pdf", // Actual resume PDF in the public folder
+    resume: "/Subasree_Resume.pdf", // Actual resume PDF in the public folder
     photo: "profile.jpg", // Actual profile photo in the public folder
   },
   about: {

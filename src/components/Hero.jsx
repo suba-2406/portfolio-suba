@@ -62,7 +62,7 @@ const Hero = () => {
               <span>View Work</span>
               <ArrowRight size={18} />
             </a>
-            <a href={portfolioData.hero.resume} target="_blank" rel="noopener noreferrer" download="Resume_Subasree.pdf" className="btn-secondary flex items-center justify-center space-x-2">
+            <a href={portfolioData.hero.resume} download="Resume_Subasree.pdf" className="btn-secondary flex items-center justify-center space-x-2">
               <span>Download Resume</span>
               <Download size={18} />
             </a>

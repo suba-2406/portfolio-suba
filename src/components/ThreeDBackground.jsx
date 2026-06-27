@@ -57,9 +57,14 @@ const ThreeDBackground = () => {
       ctx.fillStyle = isDark ? 'rgba(10, 10, 10, 0.12)' : 'rgba(248, 250, 252, 0.12)';
       ctx.fillRect(0, 0, width, height);
 
-      // Interpolate mouse movement for smooth delay
-      mouseX += (targetMouseX - mouseX) * 0.05;
-      mouseY += (targetMouseY - mouseY) * 0.05;
+      // Auto sway over time combined with mouse target
+      const time = Date.now() * 0.0005;
+      const autoSwayX = Math.sin(time) * 12;
+      const autoSwayY = Math.cos(time * 0.8) * 12;
+
+      // Interpolate mouse movement plus auto sway for constant ambient movement
+      mouseX += (targetMouseX + autoSwayX - mouseX) * 0.05;
+      mouseY += (targetMouseY + autoSwayY - mouseY) * 0.05;
 
       const fov = 400; // Perspective zoom factor
       const centerX = width / 2;

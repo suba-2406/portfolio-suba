@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ThreeDWorkspace = ({ photo }) => {
   const [coords, setCoords] = useState({ rX: 0, rY: 0, glareX: 50, glareY: 50 });
@@ -31,26 +32,39 @@ const ThreeDWorkspace = ({ photo }) => {
     setCoords({ rX: 0, rY: 0, glareX: 50, glareY: 50 });
   };
 
-  const transformStyle = isHovering
-    ? `perspective(1000px) rotateX(${coords.rX}deg) rotateY(${coords.rY}deg) scale3d(1.03, 1.03, 1.03)`
-    : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-
   return (
     <div className="relative w-full max-w-[260px] sm:max-w-[300px] mx-auto lg:mx-0">
       {/* Background glow shadow - ambient lighting behind the photo */}
       <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-blue-500/20 rounded-3xl blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none"></div>
 
       {/* Main 3D Card Wrapper */}
-      <div
+      <motion.div
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        animate={isHovering 
+          ? { rotateX: coords.rX, rotateY: coords.rY, scale: 1.03, y: -4 }
+          : { 
+              rotateX: [0, 4, -4, 0],
+              rotateY: [0, -6, 6, 0],
+              y: [0, -8, 0], // ambient float
+              scale: 1
+            }
+        }
+        transition={isHovering 
+          ? { type: 'tween', ease: 'easeOut', duration: 0.1 }
+          : { 
+              rotateX: { repeat: Infinity, duration: 7, ease: "easeInOut" },
+              rotateY: { repeat: Infinity, duration: 7, ease: "easeInOut" },
+              y: { repeat: Infinity, duration: 5, ease: "easeInOut" },
+              scale: { duration: 0.4 }
+            }
+        }
         style={{
-          transform: transformStyle,
-          transition: isHovering ? 'transform 0.05s ease-out' : 'transform 0.5s ease',
+          perspective: 1000,
           transformStyle: 'preserve-3d'
         }}
-        className="relative overflow-hidden w-full aspect-[3/4] bg-white/10 dark:bg-slate-900/10 backdrop-blur-md border border-slate-200/40 dark:border-white/10 rounded-3xl shadow-2xl p-3"
+        className="relative overflow-hidden w-full aspect-[3/4] bg-white/10 dark:bg-slate-900/10 backdrop-blur-md border border-slate-200/40 dark:border-white/10 rounded-3xl shadow-2xl p-3 cursor-pointer"
       >
         {/* Dynamic glare overlay */}
         {isHovering && (
@@ -75,7 +89,7 @@ const ThreeDWorkspace = ({ photo }) => {
             style={{ transform: 'translateZ(10px)' }}
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const About = () => {
 
   // Stats for the stats dashboard
   const stats = [
-    { label: 'CGPA', value: '8.99', icon: <BookOpen size={16} className="text-emerald-400" /> },
+    { label: 'CGPA', value: '9.13', icon: <BookOpen size={16} className="text-emerald-400" /> },
     { label: 'Internships', value: '4', icon: <Zap size={16} className="text-teal-400" /> },
     { label: 'Hackathons', value: '4', icon: <Award size={16} className="text-purple-400" /> },
     { label: 'Projects Built', value: '21', icon: <Code size={16} className="text-blue-400" /> },
