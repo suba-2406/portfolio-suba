@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Mail } from 'lucide-react';
+import { Menu, X, FileText, ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
-const Navbar = ({ darkMode, toggleTheme }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -24,72 +20,142 @@ const Navbar = ({ darkMode, toggleTheme }) => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Education', href: '#education' },
+    { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#FAF5EF]/95 backdrop-blur-md shadow-warm-sm border-b border-[#E7DDD3] py-3.5'
+          : 'bg-transparent py-5'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold heading-gradient tracking-tighter">
-            PORTFOLIO.
+          {/* Logo / Personal Brand */}
+          <a href="#" className="flex flex-col group">
+            <span className="text-xl font-bold tracking-tight text-[#49352D] group-hover:text-[#A85F45] transition-colors">
+              {portfolioData.personal.name}
+            </span>
           </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex space-x-6">
-              {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-            
-            <div className="flex items-center space-x-4 border-l border-slate-300 dark:border-slate-700 pl-4">
-              <a href={portfolioData.hero.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-primary-500 transition-colors">
-                <GithubIcon size={20} />
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-7">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-semibold text-[#655A54] hover:text-[#A85F45] transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#A85F45] hover:after:w-full after:transition-all after:duration-200"
+              >
+                {link.name}
               </a>
-              <a href={portfolioData.hero.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-primary-500 transition-colors">
-                <LinkedinIcon size={20} />
-              </a>
-              <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-500 dark:text-slate-400 focus:outline-none">
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
+            ))}
+          </nav>
+
+          {/* Right Action Icons & Resume Button */}
+          <div className="hidden sm:flex items-center space-x-3">
+            <a
+              href={portfolioData.personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              className="p-2 rounded-lg text-[#655A54] hover:text-[#A85F45] hover:bg-[#F5ECE1] transition-colors"
+            >
+              <GithubIcon size={19} />
+            </a>
+            <a
+              href={portfolioData.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              className="p-2 rounded-lg text-[#655A54] hover:text-[#A85F45] hover:bg-[#F5ECE1] transition-colors"
+            >
+              <LinkedinIcon size={19} />
+            </a>
+            <a
+              href={portfolioData.personal.resumeUrl}
+              download="Subasree_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-terracotta !py-2 !px-4 text-xs tracking-wide uppercase font-bold"
+            >
+              <FileText size={15} />
+              <span>Resume</span>
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button onClick={toggleTheme} className="p-2 text-slate-500">
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-700 dark:text-slate-300">
+          {/* Mobile Hamburger Button */}
+          <div className="flex items-center space-x-2 lg:hidden">
+            <a
+              href={portfolioData.personal.resumeUrl}
+              download="Subasree_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:hidden btn-terracotta !py-1.5 !px-3 text-xs font-bold"
+            >
+              <FileText size={14} />
+              <span>Resume</span>
+            </a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Navigation Menu"
+              className="p-2 rounded-lg text-[#49352D] hover:bg-[#F5ECE1] transition-colors"
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden glass-nav absolute top-full left-0 w-full flex flex-col py-4 px-4 shadow-xl">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              onClick={() => setIsOpen(false)}
-              className="py-3 text-base font-medium text-slate-800 dark:text-slate-200 border-b border-slate-200 dark:border-slate-800 last:border-0"
+        <div className="lg:hidden bg-[#FFFFFF] border-b border-[#E7DDD3] shadow-warm-lg px-4 pt-3 pb-6 animate-fadeIn">
+          <nav className="flex flex-col space-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="py-2.5 px-3 rounded-lg text-sm font-semibold text-[#49352D] hover:bg-[#F5ECE1] hover:text-[#A85F45] transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-4 pt-4 border-t border-[#E7DDD3] flex items-center justify-between">
+            <div className="flex space-x-2">
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-[#655A54] hover:bg-[#F5ECE1] hover:text-[#A85F45]"
+              >
+                <GithubIcon size={20} />
+              </a>
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-[#655A54] hover:bg-[#F5ECE1] hover:text-[#A85F45]"
+              >
+                <LinkedinIcon size={20} />
+              </a>
+            </div>
+            <a
+              href={portfolioData.personal.resumeUrl}
+              download="Subasree_Resume.pdf"
+              className="btn-terracotta !py-2 !px-4 text-xs font-bold"
             >
-              {link.name}
+              <FileText size={15} />
+              <span>Download Resume</span>
             </a>
-          ))}
-          <div className="flex space-x-4 mt-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-            <a href={portfolioData.hero.github} className="text-slate-500"><GithubIcon size={24} /></a>
-            <a href={portfolioData.hero.linkedin} className="text-slate-500"><LinkedinIcon size={24} /></a>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 
